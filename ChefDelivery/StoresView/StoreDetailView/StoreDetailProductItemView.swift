@@ -1,0 +1,48 @@
+//
+//  StoreDetailProductItemView.swift
+//  ChefDelivery
+//
+//  Created by Luis Bandeira on 27/09/23.
+//
+
+import SwiftUI
+
+struct StoreDetailProductItemView: View {
+    
+    let product: ProductType
+    
+    var body: some View {
+        HStack(spacing: 8) {
+            VStack(alignment: .leading, spacing: 8, content: {
+                Text(product.name)
+                    .bold()
+                
+                Text(product.description)
+                    .foregroundColor(.black)
+                    .opacity(0.5)
+                    .multilineTextAlignment(.leading)
+                
+                Text(product.formattedPrice)
+            })
+            
+            Spacer()
+            
+            Image(product.image)
+                .resizable()
+                .scaledToFit()
+                .cornerRadius(12)
+                .frame(width: 120 ,height: 120)
+                .shadow(color: /*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/.opacity(0.3), radius: 20,
+                        x: 6, y: 8
+                )
+        }
+        .padding(.horizontal)
+        .foregroundColor(.black)
+    }
+}
+
+struct StoreDetailProductItemView_Previews: PreviewProvider {
+    static var previews: some View {
+        StoreDetailProductItemView(product: storesMock[0].products[0])
+    }
+}
